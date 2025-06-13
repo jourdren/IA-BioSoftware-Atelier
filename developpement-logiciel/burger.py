@@ -77,14 +77,14 @@ class BurgerMaker:
             print(f"An error occurred while assembling the burger: {error}")
             return None
 
-    def save_burger(self, burger: str) -> None:
-        """Save the burger description to a file."""
+    def save_burger(self, burger):
+        """Save the burger description to a file in the /tmp directory."""
         try:
-            with open("burger.txt", "w", encoding="utf-8") as file:
+            with open("/tmp/burger.txt", "w", encoding="utf-8") as file:
                 file.write(burger)
-            with open("burger_count.txt", "w", encoding="utf-8") as file:
+            with open("/tmp/burger_count.txt", "w", encoding="utf-8") as file:
                 file.write(str(self.burger_count))
-            print("Burger saved to burger.txt")
+            print("Burger saved to /tmp/burger.txt")
         except IOError as error:
             print(f"An error occurred while saving the burger: {error}")
 
