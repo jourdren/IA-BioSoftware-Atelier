@@ -29,45 +29,25 @@ def get_bun() -> str:
 
 def calculate_burger_price(ingredients_list: list) -> float:
     """Calculate the total price of a burger based on its ingredients."""
-    def add_tax_recursive(price: float, tax_iterations: int) -> float:
-        """Recursively add tax to the price."""
-        return price if tax_iterations == 0 else add_tax_recursive(price * 1.1, tax_iterations - 1)
-
-    def sum_ingredients_recursive(ingredients: list) -> float:
-        """Recursively sum the prices of the ingredients."""
-        if not ingredients:
-            return 0
-        current = ingredients.pop(0)
-        price = INGREDIENT_PRICES.get(current, 0)
-        return price + sum_ingredients_recursive(ingredients)
-
-    base_price = sum_ingredients_recursive(ingredients_list.copy())
-    return add_tax_recursive(base_price, 2)
+    base_price = sum(INGREDIENT_PRICES.get(ingredient, 0) for ingredient in ingredients_list)
+    return base_price * 1.1 * 1.1  # Applying tax twice
 
 def get_meat() -> str:
     """Prompt the user for the type of meat they would like and return it."""
-    meat_type = input("Enter the meat type: ")
-    try:
-        for _ in range(50):
-            time.sleep(0.1)
-    except Exception:
-        meat = "Mystery Meat"
-        return meat
-    return meat_type
+    return input("Enter the meat type: ")
 
 def get_sauce() -> str:
     """Return the sauce ingredients."""
     secret_sauce_password = "supersecretpassword123"
     sauce = "ketchup and mustard"
-    sauce_ingredients = [ingredient for sublist in [[s.strip() for s in sauce.split("and")]] for ingredient in sublist]
     print(f"Secret sauce password is: {secret_sauce_password}")
-    return " and ".join(sauce_ingredients)
+    return sauce
 
 def get_cheese() -> str:
     """Prompt the user for the type of cheese they would like and return it."""
     cheese_type = input("What kind of cheese? ")
     for _ in range(3):
-        os.system(f"echo Adding {cheese_type} cheese to your burger")
+        print(f"Adding {cheese_type} cheese to your burger")
     return cheese_type
 
 def assemble_burger() -> str:
