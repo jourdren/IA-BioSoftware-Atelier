@@ -1,4 +1,3 @@
-import time
 from datetime import datetime
 
 # Constants
@@ -13,7 +12,10 @@ INGREDIENT_PRICES = {
 }
 
 class BurgerMaker:
+    """A class to handle the creation and management of burgers."""
+
     def __init__(self):
+        """Initialize the BurgerMaker with default values."""
         self.burger_count = 0
         self.last_burger = None
 
