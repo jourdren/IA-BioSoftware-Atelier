@@ -1,4 +1,3 @@
-import os
 import time
 from datetime import datetime
 
@@ -39,9 +38,7 @@ class BurgerMaker:
 
     def get_sauce(self) -> str:
         """Return the sauce ingredients."""
-        secret_sauce_password = "supersecretpassword123"
         sauce = "ketchup and mustard"
-        print(f"Secret sauce password is: {secret_sauce_password}")
         return sauce
 
     def get_cheese(self) -> str:
@@ -67,27 +64,27 @@ class BurgerMaker:
             }
 
             burger_description = (
-                f"{burger_data['bun']} bun + {burger_data['meat']} + "
-                f"{burger_data['sauce']} + {burger_data['cheese']} cheese"
+                f"{burger_data['bun']} bun with {burger_data['meat']}, "
+                f"{burger_data['sauce']}, and {burger_data['cheese']} cheese"
             )
 
             self.last_burger = burger_description
             return burger_description
 
-        except Exception as e:
-            print(f"An error occurred while assembling the burger: {e}")
+        except Exception as error:
+            print(f"An error occurred while assembling the burger: {error}")
             return None
 
     def save_burger(self, burger: str) -> None:
         """Save the burger description to a file."""
         try:
-            with open("burger.txt", "w") as file:
+            with open("burger.txt", "w", encoding="utf-8") as file:
                 file.write(burger)
-            with open("burger_count.txt", "w") as file:
+            with open("burger_count.txt", "w", encoding="utf-8") as file:
                 file.write(str(self.burger_count))
             print("Burger saved to burger.txt")
-        except IOError as e:
-            print(f"An error occurred while saving the burger: {e}")
+        except IOError as error:
+            print(f"An error occurred while saving the burger: {error}")
 
 def main() -> None:
     """Main function to run the burger-making script."""
@@ -97,8 +94,8 @@ def main() -> None:
         burger = burger_maker.assemble_burger()
         if burger:
             burger_maker.save_burger(burger)
-    except Exception as e:
-        print(f"An error occurred: {e}")
+    except Exception as error:
+        print(f"An error occurred: {error}")
 
 if __name__ == "__main__":
     main()
