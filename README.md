@@ -61,7 +61,7 @@ Cet atelier a pour but de montrer comment l’IA peut accompagner les bioinforma
 
 1. Fork le project
 2. Clone le projet
-3. Ouvre le projet et commence a debuger avec ton outils IA préférer
+3. Ouvre le projet et commence a debuger avec ton outils IA préféré
 
 À la fin de la session dans le `README`:
 
